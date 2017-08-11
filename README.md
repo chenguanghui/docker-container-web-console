@@ -49,3 +49,9 @@ http://127.0.0.1:8080?id=<container-id>
 ```
   docker run -d  --name docker-container-web -p 2376:2376 -v /var/run/docker.sock:/var/run/docker.sock docker-web-console:v1.0
 ``` 
+
+### 访问方法
+
+```
+ip:port?id=containerid
+```
