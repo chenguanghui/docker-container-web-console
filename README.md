@@ -49,6 +49,59 @@ http://127.0.0.1:8080?id=<container-id>
 ```
   docker run -d  --name docker-container-web -p 2376:2376 -v /var/run/docker.sock:/var/run/docker.sock docker-web-console:v1.0
 ``` 
+  json
+```
+{
+  "id": "/docker-web-console",
+  "cmd": null,
+  "cpus": 0.1,
+  "mem": 32,
+  "disk": 0,
+  "instances": 4,
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
+  "container": {
+    "type": "DOCKER",
+    "volumes": [
+      {
+        "containerPath": "/var/run/docker.sock",
+        "hostPath": "/var/run/docker.sock",
+        "mode": "RW"
+      }
+    ],
+    "docker": {
+      "image": "192.168.15.141/dcos_mgmt/docker-web-console:v1.0",
+      "network": "HOST",
+      "portMappings": null,
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": false
+    }
+  },
+  "healthChecks": [
+    {
+      "protocol": "TCP",
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false,
+      "port": 2378
+    }
+  ],
+  "portDefinitions": [
+    {
+      "port": 10002,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}
+```
 
 ### 访问方法
 
